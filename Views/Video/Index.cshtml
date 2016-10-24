@@ -1,0 +1,117 @@
+﻿@model VideoLoaderMVC.ViewModel.UploadPageModel
+
+@using VideoLoaderMVC.Models
+
+@{
+    ViewBag.Title = "UploadVideo";
+}
+
+<h2>Video Upload</h2>
+
+<br />
+<br />
+
+<form action="" method="post" enctype="multipart/form-data">
+  
+  <label for="file">Filename:</label>
+  <input type="file" name="file" id="file" />
+
+  <br />
+  <br />
+
+  <input type="submit" value="Upload Video"/>
+</form>
+
+<br />
+
+@if (Model != null)
+{
+    <div>
+    <strong>File Name:</strong>@Html.DisplayFor(model => model.FileName)   
+    <br />
+    <strong>File Decription:</strong>@Html.DisplayFor(model => model.FileDescription)    
+    <br />
+    @{var errors = @Model.UploadErrors;}
+
+    @if (string.IsNullOrEmpty(errors))
+    {
+      <strong>Upload Successful</strong>
+    }
+    else
+    {
+      <strong>Upload Errors: @Html.DisplayFor(model => model.UploadErrors)</strong>
+    } 
+    </div>
+}
+
+<br /><br />
+
+<div id="divVideos">
+    <table id="tbFiles">
+    <tr>
+    <th>
+      File Name
+    </th>
+    <th>
+      File Path
+    </th>
+    <th>
+      Created
+    </th>
+    <th>
+      Updated
+    </th>
+    <tr/>
+        @foreach (VideoFileModel item in ViewBag.VideoFiles)
+        {
+            <tr>
+                <td>@Html.ActionLink(@item.FileName, "Index", "Video", new { videoFileName = @item.FileName }, null)</td>
+                <td> @item.FilePath </td>
+                <td> @item.CreatedDate.ToString() </td>
+                <td> @item.UpdatedDate.ToString() </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<br />
+<h2>Video Player</h2>
+<br />
+<div style="width:700px;margin:0px auto;">
+        <video id="example_video_1" class="video-js vjs-default-skin"
+               controls preload="auto" width="640" height="264"
+               poster="http://video-js.zencoder.com/oceans-clip.png"
+               data-setup='{"controls":true}'>
+            <!--<source id="videoSource" src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />--> 
+            <source id="videoSource" src="@ViewBag.VideoToPlay" type='video/mp4' />             
+        </video>
+</div>
+
+<script>
+    videojs.autoSetup();
+
+    videojs('my_video_1').ready(function () {
+        console.log(this.options()); //log all of the default videojs options
+
+        // Store the video object
+        var myPlayer = this, id = myPlayer.id();
+        // Make up an aspect ratio
+        var aspectRatio = 264 / 640;
+
+        function resizeVideoJS() {
+            var width = document.getElementById(id).parentElement.offsetWidth;
+            myPlayer.width(width).height(width * aspectRatio);
+        }
+
+        // Initialize resizeVideoJS()
+        resizeVideoJS();
+        // Then on resize call resizeVideoJS()
+        window.onresize = resizeVideoJS;
+    });
+</script>
+
+
+
+
+
+

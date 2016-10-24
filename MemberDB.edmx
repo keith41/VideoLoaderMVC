@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ksalomon_listModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ksalomon_listModelStoreContainer">
+          <EntitySet Name="FileInfo" EntityType="ksalomon_listModel.Store.FileInfo" store:Type="Tables" Schema="ksalo_list" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Member" EntityType="ksalomon_listModel.Store.Member" store:Type="Tables" Schema="ksalo_list" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+        </EntityContainer>
+        <EntityType Name="FileInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="varchar" MaxLength="255" />
+          <Property Name="FilePath" Type="varchar" MaxLength="100" />
+          <Property Name="FileDescription" Type="varchar(max)" />
+          <Property Name="FileSize" Type="varchar" MaxLength="50" />
+          <Property Name="MemberFK" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Address2" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="State" Type="varchar" MaxLength="100" />
+          <Property Name="Zip" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneMobile" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneHome" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneBusiness" Type="varchar" MaxLength="20" />
+          <Property Name="OptIn" Type="bit" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ksalomon_listModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="ksalomon_listEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Members" EntityType="ksalomon_listModel.Member" />
+          <EntitySet Name="FileInfoes" EntityType="ksalomon_listModel.FileInfo" />
+        </EntityContainer>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Zip" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PhoneMobile" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PhoneHome" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PhoneBusiness" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="OptIn" Type="Boolean" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FileInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="FileName" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FilePath" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FileDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FileSize" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="MemberFK" />
+          <Property Type="DateTime" Name="CreatedDate" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ksalomon_listModelStoreContainer" CdmEntityContainer="ksalomon_listEntities">
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="ksalomon_listModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PhoneMobile" ColumnName="PhoneMobile" />
+                <ScalarProperty Name="PhoneHome" ColumnName="PhoneHome" />
+                <ScalarProperty Name="PhoneBusiness" ColumnName="PhoneBusiness" />
+                <ScalarProperty Name="OptIn" ColumnName="OptIn" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileInfoes">
+            <EntityTypeMapping TypeName="ksalomon_listModel.FileInfo">
+              <MappingFragment StoreEntitySet="FileInfo">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="MemberFK" ColumnName="MemberFK" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileDescription" ColumnName="FileDescription" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

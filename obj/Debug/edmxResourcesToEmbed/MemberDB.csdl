@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ksalomon_listModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="ksalomon_listEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Members" EntityType="ksalomon_listModel.Member" />
+    <EntitySet Name="FileInfoes" EntityType="ksalomon_listModel.FileInfo" />
+  </EntityContainer>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Address2" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Zip" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PhoneMobile" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="PhoneHome" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="PhoneBusiness" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="OptIn" Type="Boolean" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="FileInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="FileName" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FilePath" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FileDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FileSize" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="MemberFK" />
+    <Property Type="DateTime" Name="CreatedDate" Precision="3" />
+    <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,3 @@
+https://iwdntfstd01.latimes.com:8443/svn/Windows/BookIt/trunk/
+
+https://iwdntfstd01.latimes.com:8443/svn/Windows

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ksalomon_listModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ksalomon_listModelStoreContainer">
+    <EntitySet Name="FileInfo" EntityType="ksalomon_listModel.Store.FileInfo" store:Type="Tables" Schema="ksalo_list" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Member" EntityType="ksalomon_listModel.Store.Member" store:Type="Tables" Schema="ksalo_list" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+  </EntityContainer>
+  <EntityType Name="FileInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FileName" Type="varchar" MaxLength="255" />
+    <Property Name="FilePath" Type="varchar" MaxLength="100" />
+    <Property Name="FileDescription" Type="varchar(max)" />
+    <Property Name="FileSize" Type="varchar" MaxLength="50" />
+    <Property Name="MemberFK" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" />
+    <Property Name="LastName" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+    <Property Name="Address2" Type="varchar" MaxLength="255" />
+    <Property Name="City" Type="varchar" MaxLength="255" />
+    <Property Name="State" Type="varchar" MaxLength="100" />
+    <Property Name="Zip" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneMobile" Type="varchar" MaxLength="20" />
+    <Property Name="PhoneHome" Type="varchar" MaxLength="20" />
+    <Property Name="PhoneBusiness" Type="varchar" MaxLength="20" />
+    <Property Name="OptIn" Type="bit" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateUpdated" Type="datetime" />
+  </EntityType>
+</Schema>

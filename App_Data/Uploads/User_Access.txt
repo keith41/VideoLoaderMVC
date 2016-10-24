@@ -1,0 +1,4 @@
+http://lantoitqaweb01:1286/ADSDBManagementTool.aspx
+\\Lantoitqaweb01\e$
+
+ 
